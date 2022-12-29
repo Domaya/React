@@ -1,20 +1,23 @@
 [
 	{
-	    "id" : 3,
+	    "id" : 6,
 	    "title" : "Flowey",
   	    "content" : "only 5 inches",
-	    "price" : 120000
+	    "price" : 120000,
+		"img" : "/img/yb9.jpg"
 	},
 	{
-	    "id" : 4,
+	    "id" : 7,
 	    "title" : "Baby shirt",
   	    "content" : "for less than 6",
-	    "price" : 120000
+	    "price" : 120000,
+		"img" : "/img/yb10.jpg"
 	},
 	{
-	    "id" : 5,
+	    "id" : 8,
 	    "title" : "Baby Shirt",
   	    "content" : "Born in France",
-	    "price" : 130000
+	    "price" : 130000,
+		"img" : "/img/yb11.jpg"
 	}
 ]

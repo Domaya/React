@@ -5,11 +5,11 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import data from './data'
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { Route, Routes, useNavigate, Link } from 'react-router-dom';
 import Detail from './component/Detail'
 import Cart from './component/Cart'
 import About from './component/About'
-
+import axios from 'axios';
 
 function App() {
 
@@ -40,7 +40,7 @@ function App() {
               navbarScroll
             >
               <Nav.Link href="/">Home</Nav.Link>
-              <Nav.Link href="/detail">Detail</Nav.Link>
+              <Nav.Link href="/event">Event</Nav.Link>
               <Nav.Link href="/cart">Cart</Nav.Link>
               <Nav.Link href="/about">About</Nav.Link>
 
@@ -95,12 +95,22 @@ function App() {
         {/* 이 위치에 중첩 라우터 한 거 보여준다 */}
 
       </Routes>
-
+      <button onClick={()=>{
+        // axios.get('https://raw.githubusercontent.com/ai-edu-pro/busan/main/daa2.json')
+        axios.get('https://raw.githubusercontent.com/Domaya/React/main/workspace/shopping-mall/src/data2.json')
+        .then((result)=>{
+          let newCopy = [...data, ...result.data];
+          setData(newCopy);
+          console.log(newCopy)
+        }).catch(()=>{console.log('ajax fail')})
+      }} className='btn btn-primary'>더보기</button>
     </div>
   );
 }
 function Event() {
-
+  return(
+    <h3>이벤트</h3>
+  )
 }
 
 function Card(props) {
@@ -121,7 +131,6 @@ function Card(props) {
             <h4>{item.title}</h4>
             <p>{item.content}</p>
             <p>{item.price}</p>
-            <button className="btn btn-danger mb-3">주문하기</button>
           </div>
         )}
 
