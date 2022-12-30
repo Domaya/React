@@ -1,20 +1,26 @@
+import React, { useState, useEffect } from 'react';
+import {Nav, Navbar, Container, NavDropdown, Button} from 'react-bootstrap'
+import { Link, Outlet, Route, Routes, useNavigate } from 'react-router-dom';
+import axios from 'axios';
+
+
 import './App.css';
-import { useState, useEffect } from 'react';
 import './css/main.css'
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
 import data from './data'
-import { Route, Routes, useNavigate, Link } from 'react-router-dom';
+
 import Detail from './component/Detail'
 import Cart from './component/Cart'
 import About from './component/About'
-import axios from 'axios';
+
+
+
+export let StockContext = React.createContext(); //1. Context만들기
 
 function App() {
 
   let [Data, setData] = useState(data);
   const [flag, setFlag] = useState(true);
+  let [stock] = useState([7, 13, 20])
 
 
 
@@ -72,14 +78,29 @@ function App() {
                 }
               </div>
             </div>
+            <button onClick={()=>{
+        axios.get('https://raw.githubusercontent.com/Domaya/React/main/workspace/shopping-mall/src/data2.json')
+        .then((result)=>{
+          let newCopy = [...data, ...result.data];
+          setData(newCopy);
+          console.log(newCopy)
+        }).catch(()=>{console.log('ajax fail')})
+      }} className='btn btn-primary'>더보기</button>
 
+      {/* <button onClick={()=>{
+        axios.post('URL', {name:'yuna'}).then().catch()
+      }}></button> */}
 
             <Card data={data} />
           </>
         }>
         </Route>
 
-        <Route path='/detail/:id' element={<Detail data={data} />} />
+        <Route path='/detail/:id' element={
+          <StockContext.Provider value={{stock}}>
+            <Detail data={data} ></Detail>
+          </StockContext.Provider>
+          }/>
         <Route path='/cart' element={<Cart />} />
         <Route path='/about' element={<About />}>
           <Route path='emp' element={<div>너는 우리 직원이야</div>} />
@@ -95,15 +116,7 @@ function App() {
         {/* 이 위치에 중첩 라우터 한 거 보여준다 */}
 
       </Routes>
-      <button onClick={()=>{
-        // axios.get('https://raw.githubusercontent.com/ai-edu-pro/busan/main/daa2.json')
-        axios.get('https://raw.githubusercontent.com/Domaya/React/main/workspace/shopping-mall/src/data2.json')
-        .then((result)=>{
-          let newCopy = [...data, ...result.data];
-          setData(newCopy);
-          console.log(newCopy)
-        }).catch(()=>{console.log('ajax fail')})
-      }} className='btn btn-primary'>더보기</button>
+
     </div>
   );
 }

@@ -4,6 +4,7 @@ let data = [
 	    title : "NM HAIRY BEANIE",
   	    content : "Born in France",
 	    price : 120000,
+		count :1,
 		img : '/img/yb2.jpg'
 	},
 	{
@@ -11,6 +12,7 @@ let data = [
 	    title : "FLARE Knit Beanie",
   	    content : "Born in Seoul",
 	    price : 110000,
+		count :1,
 		img : '/img/yb3.jpg'
 	},
 	{
@@ -18,6 +20,7 @@ let data = [
 	    title : "SOFT BUCKET HAT",
   	    content : "Born in the states",
 	    price : 130000,
+		count :1,
 		img : '/img/yb4.jpg'
 	},
 	{
@@ -25,6 +28,7 @@ let data = [
 	    title : "NICE DAY",
   	    content : "Born in France",
 	    price : 120000,
+		count :1,
 		img : '/img/yb9.jpg'
 	},
 	{
@@ -32,6 +36,7 @@ let data = [
 	    title : "Sweet Alert",
   	    content : "Born in Seoul",
 	    price : 110000,
+		count :1,
 		img : '/img/yb6.jpg'
 	},
 	{
@@ -39,6 +44,7 @@ let data = [
 	    title : "SOFT HAT",
   	    content : "Born in the states",
 	    price : 130000,
+		count :1,
 		img : '/img/yb7.jpg'
 	}
 ]
