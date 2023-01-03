@@ -22,7 +22,14 @@ function App() {
   const [flag, setFlag] = useState(true);
   let [stock] = useState([7, 13, 20])
 
+  //최근 본 상품 목록 저장
+  let obj = {name:'lee doyeon'}
+  localStorage.setItem('data', JSON.stringify(obj))
+  outObj = localStorage.getItem('data')
 
+  useEffect(()=>{
+    localStorage.setItem('outarr', JSON.stringify([]));
+  })
 
   useEffect(() => {
     //여기에 기재하면 이 코드는 컴포넌트의 생성/ 업데이트 시 실행
